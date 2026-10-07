@@ -1,13 +1,10 @@
-
-
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-
 from app.database import engine, Base
 
-
 from app.routes import (
+    analysis,
     auth,
     users,
     drivers,
@@ -31,7 +28,8 @@ from app.routes import (
 Base.metadata.create_all(bind=engine)
 
 
-
+# ============================================================
+# APPLICATION
 # ============================================================
 
 app = FastAPI(
@@ -97,12 +95,14 @@ app.include_router(
     tags=["Authentication"],
 )
 
+
 # Users
 app.include_router(
     users.router,
     prefix=f"{API_PREFIX}/users",
     tags=["Users"],
 )
+
 
 # Drivers
 app.include_router(
@@ -111,12 +111,14 @@ app.include_router(
     tags=["Drivers"],
 )
 
+
 # Trucks
 app.include_router(
     trucks.router,
     prefix=f"{API_PREFIX}/trucks",
     tags=["Trucks"],
 )
+
 
 # Traders
 app.include_router(
@@ -125,12 +127,14 @@ app.include_router(
     tags=["Traders"],
 )
 
+
 # Loads
 app.include_router(
     loads.router,
     prefix=f"{API_PREFIX}/loads",
     tags=["Loads"],
 )
+
 
 # Matching
 app.include_router(
@@ -139,12 +143,14 @@ app.include_router(
     tags=["Matching"],
 )
 
+
 # Load Pooling
 app.include_router(
     pooling.router,
     prefix=f"{API_PREFIX}/pooling",
     tags=["Load Pooling"],
 )
+
 
 # Multi-hop Routes
 app.include_router(
@@ -153,12 +159,14 @@ app.include_router(
     tags=["Multi-Hop"],
 )
 
+
 # Fair Pricing
 app.include_router(
     pricing.router,
     prefix=f"{API_PREFIX}/pricing",
     tags=["Pricing"],
 )
+
 
 # AI Predictions
 app.include_router(
@@ -167,12 +175,21 @@ app.include_router(
     tags=["AI Predictions"],
 )
 
+
 # Route Risk
 app.include_router(
     route_risk.router,
     prefix=f"{API_PREFIX}/route-risk",
     tags=["Route Risk"],
 )
+
+
+# Unified Truck Analysis
+app.include_router(
+    analysis.router,
+    tags=["Truck Analysis"],
+)
+
 
 # Bookings
 app.include_router(
@@ -181,12 +198,14 @@ app.include_router(
     tags=["Bookings"],
 )
 
+
 # Payments
 app.include_router(
     payments.router,
     prefix=f"{API_PREFIX}/payments",
     tags=["Payments"],
 )
+
 
 # Live Tracking
 app.include_router(
@@ -195,12 +214,14 @@ app.include_router(
     tags=["Tracking"],
 )
 
+
 # Notifications
 app.include_router(
     notifications.router,
     prefix=f"{API_PREFIX}/notifications",
     tags=["Notifications"],
 )
+
 
 # WhatsApp
 app.include_router(
