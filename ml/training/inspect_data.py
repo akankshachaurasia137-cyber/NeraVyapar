@@ -1,0 +1,11 @@
+import pandas as pd 
+df = pd.read_csv("ml/data/empty_return_data.csv")
+print("Rows:", df.shape[0])
+print("Columns:", df.shape[1])
+print(df.columns.tolist())
+print(df.head())
+print(df.dtypes)
+print(df.isnull().sum())
+print(df["empty_return"].value_counts())
+print(df["empty_return"].value_counts(normalize=True) * 100)
+print(df.describe())
