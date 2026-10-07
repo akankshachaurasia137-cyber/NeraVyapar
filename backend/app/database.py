@@ -1,19 +1,47 @@
+# backend/app/database.py
+
 from sqlalchemy import create_engine
-from sqlalchemy.orm import DeclarativeBase, sessionmaker
+from sqlalchemy.orm import declarative_base, sessionmaker
+
 from .config import settings
 
-class Base(DeclarativeBase):
-    pass
-engine=create_engine(settings.database_url, pool_pre_ping=True)
-SessionLocal=sessionmaker(bind=engine ,autoflush=False , autocommit=False)
+
+# ============================================================
+# DATABASE ENGINE
+# ============================================================
+
+engine = create_engine(
+    settings.DATABASE_URL,
+    pool_pre_ping=True,
+)
+
+
+# ============================================================
+# DATABASE SESSION
+# ============================================================
+
+SessionLocal = sessionmaker(
+    autocommit=False,
+    autoflush=False,
+    bind=engine,
+)
+
+
+# ============================================================
+# BASE MODEL
+# ============================================================
+
+Base = declarative_base()
+
+
+# ============================================================
+# DATABASE DEPENDENCY
+# ============================================================
 
 def get_db():
-    db=SessionLocal()
+    db = SessionLocal()
+
     try:
         yield db
     finally:
         db.close()
-
-def init_db():
-    from .models import user , driver ,truck,load,match,booking,payment ,trip,location,notifications
-    Base.metadata.create_all(bind=engine)
