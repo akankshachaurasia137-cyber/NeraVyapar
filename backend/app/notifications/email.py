@@ -1,0 +1,1 @@
+async def send_email(to,subject,body): return{"sent":False,"reason":"SMTP adapter not configured"}

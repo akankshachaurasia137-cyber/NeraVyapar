@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # LoadBack Multilingual Chatbot
 
 Standalone FastAPI chatbot for the LoadBack hackathon.
@@ -55,3 +56,10 @@ WHATSAPP_ACCESS_TOKEN, WHATSAPP_PHONE_NUMBER_ID, WHATSAPP_VERIFY_TOKEN.
 
 Meta needs a public HTTPS webhook; localhost alone cannot receive WhatsApp
 webhooks.
+=======
+# HAWCC
+
+### Hands-on AI-powered Workspace for Coding & Collaboration
+ 
+#
+>>>>>>> origin/main
