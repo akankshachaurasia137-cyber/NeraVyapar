@@ -1,0 +1,1 @@
+def run(): return {"status":"prediction job placeholder"}
