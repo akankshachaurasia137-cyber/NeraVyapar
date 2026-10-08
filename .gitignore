@@ -1,1 +1,33 @@
 .mongo/
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.pyd
+
+# Environment
+.env
+.env.*
+!.env.example
+# Node
+node_modules/
+dist/
+build/
+.next/
+# IDE
+.vscode/
+.idea/
+# OS
+.DS_Store
+Thumbs.db
+# Logs
+*.log
+*.pyc
+.venv/
+__pycache__/
+*.pyc
+.venv/
+__pycache__/
+*.pyc
+.env
